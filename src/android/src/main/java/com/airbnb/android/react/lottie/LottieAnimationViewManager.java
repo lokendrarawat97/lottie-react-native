@@ -115,7 +115,7 @@ class LottieAnimationViewManager extends SimpleViewManager<LottieAnimationView> 
             if (startFrame != -1 && endFrame != -1) {
               view.setMinAndMaxFrame(args.getInt(0), args.getInt(1));
             }
-            if (ViewCompat.isAttachedToWindow(view)) {
+            if (view.isAttachedToWindow()) {
               view.setProgress(0f);
               view.playAnimation();
             } else {
@@ -141,7 +141,7 @@ class LottieAnimationViewManager extends SimpleViewManager<LottieAnimationView> 
       case COMMAND_RESET: {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
           @Override public void run() {
-            if (ViewCompat.isAttachedToWindow(view)) {
+            if (view.isAttachedToWindow()) {
               view.cancelAnimation();
               view.setProgress(0f);
             }
